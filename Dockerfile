@@ -10,6 +10,7 @@ ENV EXPOSE_PORT 80
 ENV WORKDIR "/var/www/html"
 
 RUN apt-get update \
+    && add-apt-repository ppa:git-ftp/ppa \
     && apt-get upgrade -y \
     && apt-get install -y \
         libfreetype6-dev \
@@ -29,7 +30,7 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN apt-get update \
-    && apt-get install -y libmemcached-dev
+    && apt-get install -y libmemcached-dev git-ftp
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
