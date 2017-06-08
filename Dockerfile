@@ -10,7 +10,6 @@ ENV EXPOSE_PORT 80
 ENV WORKDIR "/var/www/html"
 
 RUN apt-get update \
-    && add-apt-repository ppa:git-ftp/ppa \
     && apt-get upgrade -y \
     && apt-get install -y \
         libfreetype6-dev \
